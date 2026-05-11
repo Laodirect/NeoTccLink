@@ -1,0 +1,60 @@
+# NeoTccLink 配置文件
+# 修改后可使用 /neotcclink reload 重载。
+
+settings:
+  # 插件总开关。false 时插件不会添加任何 Server Links。
+  enabled: true
+
+  # 应用本配置前，是否先清空服务器当前已有的全部 Server Links。
+  # 开启后，默认自带/其他来源已有的链接都会被移除，最终只显示下方 links 中 enabled: true 的链接。
+  # 如需保留其他插件或服务端原本添加的链接，请改为 false。
+  clear-existing-server-links-before-apply: true
+
+  # 是否只允许 http:// 和 https:// 链接。
+  # 建议保持 true，避免填入客户端无法正常打开或不安全的协议。
+  only-http-and-https: true
+
+  # 重载或关闭插件时，是否尝试恢复被本插件覆盖过的内置类型链接。
+  # 当 clear-existing-server-links-before-apply 为 true 时，通常建议保持 false，避免默认链接被恢复。
+  restore-overwritten-type-links-on-reload: false
+
+  # 是否在控制台输出每个成功加载的链接，方便排查配置是否生效。
+  log-loaded-links: true
+
+messages:
+  # 插件消息前缀，支持使用 & 颜色符号，也可以直接使用 §。
+  prefix: "§8[§bNeoTccLink§8] §r"
+
+  # 玩家没有权限执行命令时显示的消息。
+  no-permission: "§c你没有权限执行该命令。"
+
+  # /neotcclink reload 成功后的消息。%count% 会被替换为本次加载成功的链接数量。
+  reload-success: "§a配置已重载，已应用 §e%count% §a个 Server Links。"
+
+  # settings.enabled 为 false 时显示的消息。
+  disabled: "§e插件已在配置中关闭，本次没有添加任何 Server Links。"
+
+links:
+  # 所有要显示在客户端 Server Links 菜单里的链接都在这里配置。
+  # 每个子节点名称只用于区分配置项，例如 website、support、qq_group，可自行命名。
+  #
+  # 字段说明：
+  # enabled: 是否启用此链接。false 表示保留配置但不加载。
+  # type: 链接类型。CUSTOM 表示自定义显示名；内置类型可用 /neotcclink types 查看。
+  # label: 仅 type: CUSTOM 时使用，表示客户端显示的按钮文字。
+  # url: 点击后打开的完整链接，必须包含 http:// 或 https://。
+  # override-existing-type: 仅使用内置 type 时有效。true 表示覆盖同类型已有链接，false 表示追加同类型链接。
+
+  website:
+    # 示例链接默认关闭；需要显示时改为 true，并修改 label/url。
+    enabled: false
+    type: CUSTOM
+    label: "官方网站"
+    url: "https://example.com"
+
+  support:
+    # 第二个示例链接同样默认关闭，避免插件自带默认链接。
+    enabled: false
+    type: CUSTOM
+    label: "支持/反馈"
+    url: "https://example.com/support"

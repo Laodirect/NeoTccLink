@@ -1,0 +1,31 @@
+name: NeoTccLink
+version: 1.0.1
+main: Lao_direct.NeoTccLinkPlugin
+api-version: '1.21'
+folia-supported: true
+author: Lao_direct
+description: 适用于NeoTcc的Server Link.
+
+commands:
+  neotcclink:
+    description: Manage NeoTccLink Server Links.
+    usage: /<command> <reload|list|types|help>
+    aliases: [ntclink, ntcclink, serverlinks]
+
+permissions:
+  neotcclink.admin:
+    description: Allows all NeoTccLink commands.
+    default: op
+    children:
+      neotcclink.reload: true
+      neotcclink.list: true
+      neotcclink.types: true
+  neotcclink.reload:
+    description: Allows /neotcclink reload.
+    default: op
+  neotcclink.list:
+    description: Allows /neotcclink list.
+    default: op
+  neotcclink.types:
+    description: Allows /neotcclink types.
+    default: op
